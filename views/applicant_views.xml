@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Create a menu item for the applicant management -->
+        <menuitem id="menu_applicant_management" name="Applicant Management" sequence="10"/>
+        
+
+        <!-- Define the action to be associated with the menu item -->
+        <record id="action_applicant" model="ir.actions.act_window">
+            <field name="name">Applicants</field>
+            <field name="res_model">applicant.management.applicant</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Define the main applicant form view -->
+        <record id="applicant_form_view" model="ir.ui.view">
+            <field name="name">applicant.form</field>
+            <field name="model">applicant.management.applicant</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="dob"/>
+                            <field name="gender"/>
+                            <field name="program"/>
+                            <field name="intake"/>
+                            <field name="course_units" widget="selection">
+                                <option name="unit1" value="Unit 1"/>
+                                <option name="unit2" value="Unit 2"/>
+                                <option name="unit3" value="Unit 3"/>
+                                <!-- Add more options as needed -->
+                            </field>
+
+                            <!-- Add other fields as needed -->
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Define the menu item to access the applicant form view -->
+        <menuitem id="menu_applicant" name="Applicants" sequence="10" parent="menu_applicant_management" action="action_applicant"/>
+
+    </data>
+</odoo>
